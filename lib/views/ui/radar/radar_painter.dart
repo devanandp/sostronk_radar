@@ -1,6 +1,7 @@
 import 'package:sostronk_radar/sostronk_radar_app.dart';
 import 'dart:ui' as ui;
 
+///Class for builfing the circles and arc in radar
 class RadarPainter extends CustomPainter {
   final double angle;
 
@@ -18,8 +19,8 @@ class RadarPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    var radius = min(size.width / 2, size.height / 2);
 
+    /// Methods for drawing concentric circles
     canvas.drawCircle(Offset(size.width / 2, size.height / 2), 185, _bgPaint);
 
     canvas.drawCircle(Offset(size.width / 2, size.height / 2), 155, _bgPaint);
@@ -45,6 +46,7 @@ class RadarPainter extends CustomPainter {
     canvas.translate((p0.x - px.x) / 2, (p0.y - px.y) / 2);
     canvas.rotate(angle);
 
+    ///Method for drawing arc
     canvas.drawArc(
         Rect.fromCircle(
             center: Offset(size.width / 2, size.height / 2), radius: 185),

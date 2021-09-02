@@ -49,6 +49,7 @@ class HomeScreen extends StatelessWidget {
         ));
   }
 
+///Returns the list of test widgets as images
   Widget listOfTestWidgets() {
     return Padding(
       padding: const EdgeInsets.all(30.0),
@@ -82,6 +83,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+/// Returns the centre logo
   Widget centreLogo() {
     return Positioned(
       child: Center(
@@ -94,6 +96,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+///Returns the test oval logo image
   Widget testOvalLogo() {
     return Column(
       children: [

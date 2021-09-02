@@ -1,5 +1,6 @@
 import 'package:sostronk_radar/sostronk_radar_app.dart';
 
+///Class for creating and implementing the radar view
 class RadarView extends StatefulWidget {
   @override
   _RadarViewState createState() => _RadarViewState();
