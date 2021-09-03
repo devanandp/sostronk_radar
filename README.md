@@ -1,16 +1,50 @@
 # sostronk_radar
+An application to demonstrate the animation technical challenge given by SoStronk 
 
-A new Flutter project.
+## Naming Conventions
 
-## Getting Started
+Folder Name : your_folder_name (snake case) as flutter itself follows the same.
+File Name : your_file_name.dart
+Class Name : YourClassName
+Variable Name : yourVariableName
+Private Variable : _yourPrivateVariable
+Constant Variable Name : CONSTANT_VARIABLE_NAME
+Function Name : yourFunctionName
+Private Function Name : _yourPrivateFunctionName
 
-This project is a starting point for a Flutter application.
+## Images
 
-A few resources to get you started if this is your first Flutter project:
+Place image in assets/images/ and create image entry in lib/common/images.dart. You can then use that image anywhere in app by importing the class.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## SizeConfig
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Having the size configuration reference file located in lib/common/size_config.dart.
+
+## Top-level directory layout
+
+lib
+
+├── common   
+
+         
+         ├── images.dart                      # Contains the reference location URL for all images utilised in the app 
+         
+         ├── size_config.dart                 # Contains the size configuration reference file located
+
+├── views
+
+    ├──ui
+    
+        ├── radar  
+        
+        
+                    ├──radar_painter.dart           # Contains all the code for cosmetic shapes drawing, coloring and structuring
+                
+                    ├── radar_view.dart             # Contains the animation and running of the central arc holding RadarPainter
+
+├── app.dart                                    # App kickstarting file which helps in loading the main UI screen to be loaded first
+
+├── main.dart                                   # FLUTTER entry point.
+
+└── sostronk_radar_app.dart                     # Serves as a single source of imports repository
+
