@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
         ));
   }
 
-///Returns the list of test widgets as images
+  ///Returns the list of test widgets as images
   Widget listOfTestWidgets() {
     return Padding(
       padding: const EdgeInsets.all(30.0),
@@ -63,19 +63,18 @@ class HomeScreen extends StatelessWidget {
                   color: Color.fromRGBO(71, 93, 117, 1),
                 ),
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30))),
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10))),
           ),
           Container(
             width: 400,
-            padding: EdgeInsets.only(top: 60, left: 20, right: 20),
             decoration: BoxDecoration(
                 border: Border.all(
                   color: Color.fromRGBO(71, 93, 117, 1),
                 ),
                 borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30))),
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10))),
             child: testOvalLogo(),
           ),
         ],
@@ -83,7 +82,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-/// Returns the centre logo
+  /// Returns the centre logo
   Widget centreLogo() {
     return Positioned(
       child: Center(
@@ -96,16 +95,21 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-///Returns the test oval logo image
+  ///Returns the test oval logo image
   Widget testOvalLogo() {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         for (int i = 0; i <= 5; i++)
           Container(
             height: 100,
             width: 200,
-            child: Image.asset(AllImages().testOvalWithLogo),
-            alignment: Alignment.centerLeft,
+            child: Image.asset(
+              AllImages().testOvalWithLogo,
+              height: 100,
+              width: 100,
+            ),
           ),
       ],
     );
