@@ -15,8 +15,9 @@ class _RadarViewState extends State<RadarView>
   void initState() {
     _controller =
         AnimationController(vsync: this, duration: Duration(seconds: 1));
-    _animation = Tween(begin: .0, end: pi * 2).animate(_controller);
-    _controller.repeat(period: Duration(seconds: 1));
+    _animation = Tween(begin: 0.0, end: pi * 2).animate(
+        new CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _controller.animateBack(1.0, duration: Duration(seconds: 2));
     super.initState();
   }
 

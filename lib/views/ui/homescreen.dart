@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:sostronk_radar/sostronk_radar_app.dart';
 
 /// This is the stateless widget that the main application instantiates for homescreen.
@@ -8,69 +7,78 @@ class HomeScreen extends StatelessWidget {
     SizeConfig sizeConfig = new SizeConfig();
     sizeConfig.init(context);
     return Scaffold(
-        backgroundColor: Color.fromRGBO(28, 43, 62, 1),
+      backgroundColor: MyColors().backGroundLinearGradientColor1,
         body: SafeArea(
-          child: SingleChildScrollView(
-            dragStartBehavior: DragStartBehavior.start,
-            physics: BouncingScrollPhysics(),
-            child: Container(
-              width: MediaQuery.of(context).size.width / 0.4,
-              padding: EdgeInsets.only(top: 200),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 200,
-                    width: MediaQuery.of(context).size.width,
-                    child: Stack(
-                      children: [
-                        Positioned.fill(
-                          left: 10,
-                          right: 10,
-                          child: Center(
-                            child: Stack(children: [
-                              Positioned.fill(
-                                child: RadarView(),
-                              ),
-                              centreLogo(),
-                            ]),
+      child: SingleChildScrollView(
+        dragStartBehavior: DragStartBehavior.start,
+        physics: BouncingScrollPhysics(),
+        child: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                MyColors().backGroundLinearGradientColor1,
+                MyColors().backGroundLinearGradientColor2
+              ])),
+          width: MediaQuery.of(context).size.width / 0.4,
+          padding: EdgeInsets.only(top: 200.toHeight),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                height: OrientationHelper.isPortrait(context) ? 1000.toHeight : 4000.toHeight ,
+                width: OrientationHelper.isPortrait(context) ? MediaQuery.of(context).size.width : 300.toWidth,
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      left: 100.toWidth,
+                      right: 100.toWidth,
+                      child: Center(
+                        child: Stack(children: [
+                          Positioned.fill(
+                            child: RadarView(),
                           ),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 150),
-                  listOfTestWidgets()
-                ],
+                          centreLogo(),
+                        ]),
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
+              // SizedBox(height: 150.toHeight),
+              listOfTestWidgets(context)
+            ],
           ),
-        ));
+        ),
+      ),
+    ));
   }
 
   ///Returns the list of test widgets as images
-  Widget listOfTestWidgets() {
+  Widget listOfTestWidgets(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(30.0),
+      padding: OrientationHelper.isPortrait(context) ? EdgeInsets.all(60.0.toHeight) : EdgeInsets.only(left: 10.0.toWidth, right: 10.toWidth),
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.only(top: 60, left: 20, right: 20),
-            height: 70.toHeight,
+            padding: EdgeInsets.only(top: 60.toHeight, left: 40.toWidth, right: 40.toWidth),
+            height: OrientationHelper.isPortrait(context) ? 70.toHeight : 140.toHeight,
+            width: OrientationHelper.isPortrait(context) ? 400.toWidth : 200.toWidth,
             decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color.fromRGBO(71, 93, 117, 1),
+                  color: MyColors().bottomListBorderColor,
                 ),
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(10),
                     topRight: Radius.circular(10))),
           ),
           Container(
-            width: 400,
+            width: OrientationHelper.isPortrait(context) ? 400.toWidth : 200.toWidth,
             decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color.fromRGBO(71, 93, 117, 1),
+                  color: MyColors().bottomListBorderColor,
                 ),
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(10),
@@ -103,12 +111,11 @@ class HomeScreen extends StatelessWidget {
       children: [
         for (int i = 0; i <= 5; i++)
           Container(
-            height: 100,
-            width: 200,
+            height: 250.toHeight,
+            width: 250.toWidth,
+            alignment: Alignment.centerLeft,
             child: Image.asset(
               AllImages().testOvalWithLogo,
-              height: 100,
-              width: 100,
             ),
           ),
       ],

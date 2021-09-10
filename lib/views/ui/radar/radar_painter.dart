@@ -11,7 +11,7 @@ class RadarPainter extends CustomPainter {
     ..style = PaintingStyle.stroke;
 
   Paint _paint = Paint()
-    ..color = Color.fromRGBO(245, 170, 56, 1).withOpacity(0.4)
+    ..color = MyColors().radarGradientMixer4.withOpacity(0.5)
     ..maskFilter = MaskFilter.blur(BlurStyle.inner, 1.0)
     ..style = PaintingStyle.fill;
 
@@ -19,24 +19,29 @@ class RadarPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-
     /// Methods for drawing concentric circles
-    canvas.drawCircle(Offset(size.width / 2, size.height / 2), 185, _bgPaint);
+    canvas.drawCircle(
+        Offset(size.width / 2, size.height / 2), 165.toWidth, _bgPaint);
 
-    canvas.drawCircle(Offset(size.width / 2, size.height / 2), 155, _bgPaint);
+    canvas.drawCircle(
+        Offset(size.width / 2, size.height / 2), 135.toWidth, _bgPaint);
 
-    canvas.drawCircle(Offset(size.width / 2, size.height / 2), 125, _bgPaint);
+    canvas.drawCircle(
+        Offset(size.width / 2, size.height / 2), 95.toWidth, _bgPaint);
 
-    _paint.shader = ui.Gradient.sweep(
-        Offset(size.width / 2, size.height / 2),
-        [
-          Color.fromRGBO(23, 36, 51, 1).withOpacity(1),
-          Colors.orange.withOpacity(.5)
-        ],
-        [.0, 1.0],
-        TileMode.mirror,
-        .0,
-        pi);
+    /// Radial Gradient helping on achieving radar gradient
+    _paint.shader = ui.Gradient.radial(
+      Offset(size.width / 2, size.height / 2),
+      270.toWidth,
+      [
+        MyColors().radarGradientMixer1,
+        MyColors().radarGradientMixer2,
+        MyColors().radarGradientMixer3,
+        MyColors().radarGradientMixer4,
+      ],
+      [0, 0.7, 0.6, 0],
+      TileMode.clamp,
+    );
 
     canvas.save();
     double r = sqrt(pow(size.width, 2) + pow(size.height, 2));
@@ -49,9 +54,10 @@ class RadarPainter extends CustomPainter {
     ///Method for drawing arc
     canvas.drawArc(
         Rect.fromCircle(
-            center: Offset(size.width / 2, size.height / 2), radius: 185),
+            center: Offset(size.width / 2, size.height / 2),
+            radius: 165.toWidth),
         0,
-        pi,
+        -pi,
         true,
         _paint);
     canvas.restore();
