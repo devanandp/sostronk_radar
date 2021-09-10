@@ -30,6 +30,14 @@ lib
          ├── images.dart                      # Contains the reference location URL for all images utilised in the app 
          
          ├── size_config.dart                 # Contains the size configuration reference file located
+         
+         ├── colors.dart                      # Contains the reference location URL for all colors utilised in the app
+
+         ├── responsive_orientation.dart      # Helper class for Orientation adjustment
+
+         ├── common_utils.dart                # Helper class for all Utility methods. Has HexColor conversion currently
+
+
 
 ├── views
 
